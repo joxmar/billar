@@ -15,7 +15,7 @@ jobs:
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: SERVER_IP_HERE                # Replace with your server IP, e.g., 73.232.14.178
+          host: 73.232.14.178               # Replace with your server IP, e.g., 73.232.14.178
           username: ${{ secrets.SERVER_USER }} # Should be just the username, e.g., billar
           key: ${{ secrets.SERVER_SSH_KEY }}  # Secret containing your private key
           port: 22                            # Usually 22 unless your SSH runs on a custom port
