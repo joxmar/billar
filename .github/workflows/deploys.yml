@@ -2,24 +2,29 @@ name: Deploy Site
 
 on:
   push:
-    branches: [ "master" ]  # or "main"
+    branches: [ "master" ]  # Trigger deploy when master is updated
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Deploy over SSH
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 73.232.14.178
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          host: 73.232.14.178                     # Direct IP of your VPS
+          username: ${{ secrets.SERVER_USER }}   # SSH user (e.g., billar)
+          key: ${{ secrets.SERVER_SSH_KEY }}     # Private key from GitHub Secrets
+          port: 22                               # Change only if your SSH port differs
+          timeout: 30s
+          command_timeout: 10m
           script: |
-            cd ${{ secrets.SERVER_PATH }}
+            cd ${{ secrets.SERVER_PATH }}        # Path to your repo on the server
             git fetch --all
             git reset --hard origin/master
 
