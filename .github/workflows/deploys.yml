@@ -2,7 +2,7 @@ name: Deploy Site
 
 on:
   push:
-    branches: [ "master" ]  # or "main" if that’s your branch
+    branches: [ "master" ] # or "main"
 
 jobs:
   deploy:
@@ -12,6 +12,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Test SSH connection
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 73.232.14.178
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            cd ${{ secrets.SERVER_PATH }}
+            echo "Connected successfully. Deploy path: ${{ secrets.SERVER_PATH }}"
+      
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
