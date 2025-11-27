@@ -87,13 +87,16 @@ header {
 
 header h1 {
     font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    font-weight: 700;    
+    margin-bottom: var(--spacing-xs);
+    animation: fadeInDown 0.6s ease;
+}
+
+header h1 span {
+background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--spacing-xs);
-    animation: fadeInDown 0.6s ease;
 }
 
 .subtitle {

@@ -100,7 +100,7 @@ function renderGameSection() {
                 <label for="input-${player.id}">Add Points</label>
                 <div class="input-with-button">
                     <button class="btn-undo-player" data-player-id="${player.id}" title="Undo last entry" ${player.history && player.history.length === 0 ? 'disabled' : ''}>
-                        ↩️
+                        ⎌
                     </button>
                     <input 
                         type="number" 
