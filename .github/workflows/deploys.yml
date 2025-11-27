@@ -1,0 +1,31 @@
+name: Deploy Site
+
+on:
+  push:
+    branches: [ "master" ]  # or "main"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd ${{ secrets.SERVER_PATH }}
+            git fetch --all
+            git reset --hard origin/master
+
+            # OPTIONAL: WordPress-specific steps
+            # Only if project contains a theme/plugin folder
+            # cd wp-content/themes/mytheme && npm install && npm run build
+
+            # OPTIONAL: Clear caches if needed
+            # wp cache flush --allow-root
