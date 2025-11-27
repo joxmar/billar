@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}  
           port: 22                            
           script: |
-            cd ${{ secrets.SERVER_PATH }}     # Secret containing the full path to your project folder on the server
+            cd ${{ secrets.SERVER_PATH }} 
             git fetch --all
             git reset --hard origin/master
 
