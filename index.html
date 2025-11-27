@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Pool game penalty points tracker for up to 4 players">
+    <title>Pool Penalty Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎱 Pool Penalty Tracker</h1>
+            <p class="subtitle">Lowest score wins!</p>
+        </header>
+
+        <main>
+            <!-- Player Setup Section -->
+            <section id="setupSection" class="setup-section">
+                <h2>Setup Players</h2>
+                <div class="player-inputs">
+                    <div class="input-group">
+                        <label for="player1Name">Player 1</label>
+                        <input type="text" id="player1Name" placeholder="Enter name" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <label for="player2Name">Player 2</label>
+                        <input type="text" id="player2Name" placeholder="Enter name" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <label for="player3Name">Player 3 (Optional)</label>
+                        <input type="text" id="player3Name" placeholder="Enter name" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <label for="player4Name">Player 4 (Optional)</label>
+                        <input type="text" id="player4Name" placeholder="Enter name" maxlength="20">
+                    </div>
+                </div>
+                <button id="startGameBtn" class="btn btn-primary">Start Game</button>
+            </section>
+
+            <!-- Game Section -->
+            <section id="gameSection" class="game-section hidden">
+                <div class="players-grid" id="playersGrid">
+                    <!-- Player cards will be dynamically inserted here -->
+                </div>
+
+                <div class="actions">
+                    <button id="resetPointsBtn" class="btn btn-secondary">Reset All Points</button>
+                    <button id="newGameBtn" class="btn btn-tertiary">New Game</button>
+                </div>
+
+
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
